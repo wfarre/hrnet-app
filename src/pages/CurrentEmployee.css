@@ -1,0 +1,132 @@
+.employee-table {
+  width: 80%;
+  min-width: 800px;
+}
+
+/* HEADER */
+.employee-table__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.employee-table__header__entries {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.select {
+  height: 18px;
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+.employee-table__header__search {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.search-input {
+  height: 18px;
+}
+
+/* TABLE HEADER */
+
+.table__header {
+  border-bottom: 1px solid black;
+}
+
+/* .table__header__content {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.table__header__content__item {
+  font-weight: 700;
+} */
+
+.employee-table__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid black;
+}
+
+/* FOOTER */
+
+.employee-table__footer__tablenav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.nav-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.nav-btn:hover {
+  cursor: pointer;
+}
+
+/* tbody {
+  display: table-row-group;
+} */
+
+/* td {
+  box-sizing: content-box;
+  background-color: grey;
+} */
+
+/* .data__content--nodata {
+  background-color: rgb(236, 235, 235);
+  padding: 10px 0;
+  text-align: center;
+} */
+
+/* .employee-info {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.table__header__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+  padding: 0;
+  align-items: center;
+}
+
+.table__header__content__item {
+  text-align: center;
+  font-weight: 700;
+}
+
+.employee-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 0;
+  align-items: center;
+}
+
+.employee-info__item {
+  text-align: center;
+}
+
+.table__content__empty {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 10px 0;
+}
+
+.empty-text {
+  margin: 0;
+}
