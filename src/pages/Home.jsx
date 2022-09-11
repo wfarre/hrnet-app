@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "../Components/Modal/Modal";
 
 import { ReactComponent as Arrow } from "../arrow-right-solid.svg";
+import { ReactComponent as Save } from "../save-icon.svg";
 
 import DatePicker from "../DatePicker";
 
@@ -13,14 +14,14 @@ function Home() {
   // console.log(states);
   const [modalOpen, setModalOpen] = useState(false);
   const [newEmployee, setNewEmployee] = useState({
-    firstName: null,
-    lastName: null,
+    firstName: "",
+    lastName: "",
     dateOfBirth: null,
     startDate: null,
-    street: null,
-    city: null,
+    street: "",
+    city: "",
     state: null,
-    zipCode: null,
+    zipCode: "",
     department: null,
   });
 
@@ -28,8 +29,18 @@ function Home() {
     return state.name;
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setModalOpen(!modalOpen);
+    console.log(newEmployee);
+    const inputs = document.querySelectorAll(".input");
+    console.log(inputs);
+
+    // inputs.forEach((input) => {
+    //   if (input.value === "") {
+    //     console.log(input.querySelector(".error-message"));
+    //   }
+    // });
   };
 
   const handleModal = (newModalState) => {
@@ -48,11 +59,15 @@ function Home() {
           <h1 className="title header__title">HRnet</h1>
         </header>
         <div className="container">
-          <Link to="/current-employees" className="button button--employees">
+          <Link
+            to="/current-employees"
+            className="button button--employees"
+            data-testid="btn-employees"
+          >
             View Current Employees{" "}
-            {/* <span className="icon-wrapper">
+            <span className="icon-wrapper">
               <Arrow className="icon icon--arrow hide" />
-            </span> */}
+            </span>
           </Link>
           <h2 className="title">Create Employee</h2>
           <form action="#" id="create-employee">
@@ -62,12 +77,14 @@ function Home() {
             <input
               type="text"
               id="first-name"
+              className="input"
               value={newEmployee.firstName}
               onChange={(e) =>
                 setNewEmployee({ ...newEmployee, firstName: e.target.value })
               }
               required
             />
+            <span className="error-message">Please fill this field.</span>
 
             <label className="label" htmlFor="last-name">
               Last Name
@@ -75,12 +92,14 @@ function Home() {
             <input
               type="text"
               id="last-name"
+              className="input"
               value={newEmployee.lastName}
               onChange={(e) =>
                 setNewEmployee({ ...newEmployee, lastName: e.target.value })
               }
               required
             />
+            <span className="error-message">Please fill this field.</span>
 
             <label className="label" htmlFor="date-of-birth">
               Date of Birth
@@ -88,6 +107,7 @@ function Home() {
             {/* <input id="date-of-birth" type="date" /> */}
             <DatePicker
               // value={empl}
+              className="input"
               value={newEmployee.dateOfBirth}
               handleDate={(date) => {
                 const newDateValue = new Date(date).toLocaleDateString();
@@ -102,6 +122,7 @@ function Home() {
             {/* <input id="start-date" type="date" /> */}
             <DatePicker
               // value={newEmployee.firstName}
+              className="input"
               value={newEmployee.startDate}
               handleDate={(date) => {
                 const newDateValue = new Date(date).toLocaleDateString();
@@ -119,12 +140,14 @@ function Home() {
               <input
                 id="street"
                 type="text"
+                className="input"
                 value={newEmployee.street}
                 onChange={(e) =>
                   setNewEmployee({ ...newEmployee, street: e.target.value })
                 }
                 required
               />
+              <span className="error-message">Please fill this field.</span>
 
               <label className="label" htmlFor="city">
                 City
@@ -132,21 +155,26 @@ function Home() {
               <input
                 id="city"
                 type="text"
+                className="input"
                 value={newEmployee.city}
                 onChange={(e) =>
                   setNewEmployee({ ...newEmployee, city: e.target.value })
                 }
                 required
               />
+              <span className="error-message">Please fill this field.</span>
 
               <label className="label" htmlFor="state">
                 State
               </label>
               <Select
+                className="input"
                 data={stateNames}
-                // value={newEmployee.state}
-                onChange={(e) =>
-                  setNewEmployee({ ...newEmployee, state: e.target.value })
+                value={
+                  newEmployee.state === null ? stateNames[0] : newEmployee.state
+                }
+                handleSelect={(e) =>
+                  setNewEmployee({ ...newEmployee, state: e })
                 }
                 required
               />
@@ -158,16 +186,19 @@ function Home() {
               <input
                 id="zip-code"
                 type="number"
+                className="input"
                 value={newEmployee.zipCode}
                 onChange={(e) =>
                   setNewEmployee({ ...newEmployee, zipCode: e.target.value })
                 }
                 required
               />
+              <span className="error-message">Please fill this field.</span>
             </fieldset>
 
             <label htmlFor="department">Department</label>
             <Select
+              className="input"
               name="department"
               id="department"
               data={[
@@ -177,15 +208,28 @@ function Home() {
                 "Human Resources",
                 "Legal",
               ]}
-              // value={newEmployee.department}
-              onChange={(e) =>
-                setNewEmployee({ ...newEmployee, department: e.target.value })
+              value={
+                newEmployee.department === null
+                  ? "Sales"
+                  : newEmployee.department
+              }
+              handleSelect={(e) =>
+                setNewEmployee({ ...newEmployee, department: e })
               }
               required
             />
           </form>
 
-          <button onClick={handleSubmit}>Save</button>
+          <button
+            className="button button--save"
+            data-testid="save-btn"
+            onClick={handleSubmit}
+          >
+            Save
+            <span className="icon-wrapper">
+              <Save className="icon icon--save" />
+            </span>
+          </button>
         </div>
       </main>
       <Modal

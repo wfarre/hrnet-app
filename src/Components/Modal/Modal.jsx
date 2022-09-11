@@ -6,7 +6,11 @@ const Modal = ({ modalOpen, handleModal }) => {
   };
 
   return (
-    <div id="confirmation" className={modalOpen ? "modal" : "modal hidden"}>
+    <div
+      data-testid="modal"
+      id="confirmation"
+      className={modalOpen ? "modal" : "modal hidden"}
+    >
       <div className="modal__bg" onClick={handleClick}></div>
       <div className="modal__content">
         Employee Created!

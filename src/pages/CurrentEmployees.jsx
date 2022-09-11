@@ -6,8 +6,12 @@ import EmployeeCard from "../Components/Table/EmployeeCard.jsx/EmployeeCard";
 import TableHeader from "../Components/Table/tableHeader/TableHeader";
 import { tableHeaders } from "../data/tableHeaders";
 import TableFooter from "../Components/Table/TableFooter/TableFooter";
-import { employees } from "../data/employeeData";
+import { employees } from "../data/employeesDataFile";
 import { ascendingSort, descendingSort } from "../utils/sort";
+import { ReactComponent as HomeIcon } from "../home.svg";
+import { fetchEmployees } from "../features/employees";
+import { selectEmployees } from "../selectors";
+import { useSelector, useDispatch } from "react-redux";
 
 const CurrentEmployees = () => {
   const [numberEntries, setNumberEntries] = useState(0);
@@ -32,6 +36,38 @@ const CurrentEmployees = () => {
     }
     return newArray;
   }
+
+  const dispatch = useDispatch();
+
+  // const employees = useSelector(selectEmployees).data;
+  useEffect(() => {
+    dispatch(fetchEmployees());
+    // fetch("./accommodations.json", {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json",
+    //   },
+    // })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then(
+    //     (data) => {
+    //       setIsLoaded(true);
+    //       console.log(data);
+    //       // let accomodationData = data.map((accomodation) => {
+    //       //   return new accomodationFactory(accomodation, "json");
+    //       // });
+    //       // setAccomodations(accomodationData);
+    //     },
+
+    //     (error) => {
+    //       setIsLoaded(true);
+    //       setError(error);
+    //       console.log(error);
+    //     }
+    //   );
+  }, []);
 
   useEffect(() => {
     setLastEmployeeIndex(startIndex + entriesPerPage);
@@ -80,7 +116,7 @@ const CurrentEmployees = () => {
       }
     }
     setDataToDisplay(getEmployeesBySearch(employees, searchInput));
-  }, [searchInput]);
+  }, [searchInput, employees]);
 
   useEffect(() => {
     setData(getEmployeeToDisplay(dataToDisplay, startIndex));
@@ -92,76 +128,87 @@ const CurrentEmployees = () => {
     setCurrentDataType(type);
   }
 
-  return (
-    <div id="employee-div" className="container">
-      <h1>Current Employees</h1>
-      <section className="employee-table">
-        <header className="employee-table__header">
-          <div className="employee-table__header__entries">
-            <p>Show</p>
-            <select
-              className="select"
-              onChange={(e) => setEntriesPerPage(parseInt(e.target.value))}
-            >
-              <option>10</option>
-              <option>20</option>
-              <option>50</option>
-            </select>
-            <p>entries</p>
-          </div>
-          <div className="employee-table__header__search">
-            <label htmlFor="search">Search:</label>
-            <input
-              className="search-input"
-              id="search"
-              type="text"
-              onChange={(e) => setSearchInput(e.target.value)}
-              value={searchInput}
-            />
-          </div>
-        </header>
+  console.log(employees);
 
-        <div className="table">
-          <div className="table__header">
-            <ul className="table__header__content">
-              {tableHeaders.map((header) => {
-                return (
-                  <TableHeader
-                    key={header.id}
-                    id={header.id}
-                    title={header.headerTitle}
-                    prevId={prevId}
-                    clickCounter={clickCounter}
-                    handleSort={handleSort}
-                    type={header.type}
-                  />
-                );
-              })}
-            </ul>
+  return (
+    <main>
+      <div id="employee-div" className="container">
+        <header className="page-header">
+          <h1 className="page-header__content">Current Employees</h1>
+        </header>
+        <section className="employee-table">
+          <header className="employee-table__header">
+            <div className="employee-table__header__entries">
+              <p>Show</p>
+              <select
+                className="select"
+                onChange={(e) => setEntriesPerPage(parseInt(e.target.value))}
+              >
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+              </select>
+              <p>entries</p>
+            </div>
+            <div className="employee-table__header__search">
+              <label htmlFor="search">Search:</label>
+              <input
+                className="search-input"
+                id="search"
+                type="text"
+                onChange={(e) => setSearchInput(e.target.value)}
+                value={searchInput}
+              />
+            </div>
+          </header>
+
+          <div className="table">
+            <div className="table__header">
+              <ul className="table__header__content">
+                {tableHeaders.map((header) => {
+                  return (
+                    <TableHeader
+                      key={header.id}
+                      id={header.id}
+                      title={header.headerTitle}
+                      prevId={prevId}
+                      clickCounter={clickCounter}
+                      handleSort={handleSort}
+                      type={header.type}
+                    />
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="table__content">
+              {dataToDisplay.length === 0 ? (
+                <div className="table__content__empty">
+                  <p className="empty-text">No data available in table</p>
+                </div>
+              ) : (
+                data.map((employee, key = { startIndex }) => {
+                  key++;
+                  return <EmployeeCard key={key} employee={employee} />;
+                })
+              )}
+            </div>
           </div>
-          <div className="table__content">
-            {dataToDisplay.length === 0 ? (
-              <div className="table__content__empty">
-                <p className="empty-text">No data available in table</p>
-              </div>
-            ) : (
-              data.map((employee, key = { startIndex }) => {
-                key++;
-                return <EmployeeCard key={key} employee={employee} />;
-              })
-            )}
-          </div>
-        </div>
-        <TableFooter
-          entriesPerPage={entriesPerPage}
-          lastEmployeeIndex={lastEmployeeIndex}
-          numberEntries={numberEntries}
-          startIndex={startIndex}
-          handleChangePage={(newStartIndex) => setStartIndex(newStartIndex)}
-        />
-      </section>
-      <Link to="/">Home</Link>
-    </div>
+          <TableFooter
+            entriesPerPage={entriesPerPage}
+            lastEmployeeIndex={lastEmployeeIndex}
+            numberEntries={numberEntries}
+            startIndex={startIndex}
+            handleChangePage={(newStartIndex) => setStartIndex(newStartIndex)}
+          />
+        </section>
+        <Link to="/" data-testid="btn-home" className="button button--home">
+          Home
+          <span className="icon-wrapper">
+            <HomeIcon className="icon icon--home" />
+          </span>
+        </Link>
+      </div>
+    </main>
   );
 };
 
