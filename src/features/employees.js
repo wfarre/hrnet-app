@@ -53,23 +53,26 @@ const { actions, reducer } = createSlice({
 export const fetchEmployees = () => {
   return async (dispatch, getState) => {
     console.log("get in it");
-    // const status = selectEmployees(getState()).status;
-    // console.log(status);
-    // if (status === "pending" || status === "updating") {
-    //   return;
-    // }
+
+    const status = selectEmployees(getState()).status;
+    console.log(status);
     dispatch(actions.fetching());
+
+    if (status === "pending" || status === "updating") {
+      return;
+    }
 
     console.log("heilo");
 
     try {
       // on utilise fetch pour faire la requête
-      const response = await fetch("./employeedata.json", {
+      const response = await fetch("../src/data/photographers.json", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
+      console.log(response);
       const data = await response.json();
       console.log("hello");
       console.log(data);
