@@ -53,11 +53,11 @@ const { actions, reducer } = createSlice({
 export const fetchEmployees = () => {
   return async (dispatch, getState) => {
     console.log("get in it");
-    const status = selectEmployees(getState()).status;
-    console.log(status);
-    if (status === "pending" || status === "updating") {
-      return;
-    }
+    // const status = selectEmployees(getState()).status;
+    // console.log(status);
+    // if (status === "pending" || status === "updating") {
+    //   return;
+    // }
     dispatch(actions.fetching());
 
     console.log("heilo");
