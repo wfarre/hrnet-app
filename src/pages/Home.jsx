@@ -1,14 +1,14 @@
 // import "./App.css";
 import { Select } from "select-react-component/dist";
-import { states } from "../data/statesData";
+import { states } from "../assets/data/statesData";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Modal from "../Components/Modal/Modal";
 
-import { ReactComponent as Arrow } from "../arrow-right-solid.svg";
-import { ReactComponent as Save } from "../save-icon.svg";
+import { ReactComponent as Arrow } from "../assets/images/arrow-right-solid.svg";
+import { ReactComponent as Save } from "../assets/images/save-icon.svg";
 
-import DatePicker from "../DatePicker";
+import DatePicker from "../Components/DatePicker/DatePicker";
 
 function Home() {
   // console.log(states);
@@ -16,13 +16,25 @@ function Home() {
   const [newEmployee, setNewEmployee] = useState({
     firstName: "",
     lastName: "",
-    dateOfBirth: null,
-    startDate: null,
+    dateOfBirth: "",
+    startDate: "",
     street: "",
     city: "",
-    state: null,
+    state: "",
     zipCode: "",
-    department: null,
+    department: "",
+  });
+
+  const [errorMsg, setErrorMsg] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    startDate: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    department: "",
   });
 
   const stateNames = states.map((state) => {
@@ -31,17 +43,44 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setModalOpen(!modalOpen);
     console.log(newEmployee);
-    const inputs = document.querySelectorAll(".input");
-    console.log(inputs);
+    const { formIsValid, errors } = checkInputsOnSubmit();
 
-    // inputs.forEach((input) => {
-    //   if (input.value === "") {
-    //     console.log(input.querySelector(".error-message"));
-    //   }
-    // });
+    setErrorMsg(errors);
+    if (formIsValid) {
+      setModalOpen(!modalOpen);
+      setNewEmployee({
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        startDate: "",
+        street: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        department: "",
+      });
+    }
   };
+
+  function checkInputsOnSubmit(errorObject) {
+    let errors = {};
+    let errorCounter = 0;
+    let formIsValid = false;
+    for (const key in newEmployee) {
+      if (`${newEmployee[key]}` === "") {
+        errors = { ...errors, [key]: "*required field" };
+        errorCounter++;
+      } else {
+        errors = { ...errors, [key]: "" };
+      }
+    }
+    console.log(errors);
+    if (errorCounter === 0) {
+      formIsValid = true;
+    }
+    return { formIsValid, errors };
+  }
 
   const handleModal = (newModalState) => {
     setModalOpen(newModalState);
@@ -82,9 +121,8 @@ function Home() {
               onChange={(e) =>
                 setNewEmployee({ ...newEmployee, firstName: e.target.value })
               }
-              required
             />
-            <span className="error-message">Please fill this field.</span>
+            <span className="error-message">{errorMsg.firstName}</span>
 
             <label className="label" htmlFor="last-name">
               Last Name
@@ -97,9 +135,8 @@ function Home() {
               onChange={(e) =>
                 setNewEmployee({ ...newEmployee, lastName: e.target.value })
               }
-              required
             />
-            <span className="error-message">Please fill this field.</span>
+            <span className="error-message">{errorMsg.lastName}</span>
 
             <label className="label" htmlFor="date-of-birth">
               Date of Birth
@@ -113,8 +150,8 @@ function Home() {
                 const newDateValue = new Date(date).toLocaleDateString();
                 setNewEmployee({ ...newEmployee, dateOfBirth: newDateValue });
               }}
-              required
             />
+            <span className="error-message">{errorMsg.startDate}</span>
 
             <label className="label" htmlFor="start-date">
               Start Date
@@ -128,8 +165,8 @@ function Home() {
                 const newDateValue = new Date(date).toLocaleDateString();
                 setNewEmployee({ ...newEmployee, startDate: newDateValue });
               }}
-              required
             />
+            <span className="error-message">{errorMsg.dateOfBirth}</span>
 
             <fieldset className="address">
               <legend>Address</legend>
@@ -145,9 +182,8 @@ function Home() {
                 onChange={(e) =>
                   setNewEmployee({ ...newEmployee, street: e.target.value })
                 }
-                required
               />
-              <span className="error-message">Please fill this field.</span>
+              <span className="error-message">{errorMsg.street}</span>
 
               <label className="label" htmlFor="city">
                 City
@@ -160,9 +196,8 @@ function Home() {
                 onChange={(e) =>
                   setNewEmployee({ ...newEmployee, city: e.target.value })
                 }
-                required
               />
-              <span className="error-message">Please fill this field.</span>
+              <span className="error-message">{errorMsg.city}</span>
 
               <label className="label" htmlFor="state">
                 State
@@ -176,9 +211,8 @@ function Home() {
                 handleSelect={(e) =>
                   setNewEmployee({ ...newEmployee, state: e })
                 }
-                required
               />
-              {/* <select name="state" id="state"></select> */}
+              <span className="error-message">{errorMsg.state}</span>
 
               <label className="label" htmlFor="zip-code">
                 Zip Code
@@ -191,9 +225,8 @@ function Home() {
                 onChange={(e) =>
                   setNewEmployee({ ...newEmployee, zipCode: e.target.value })
                 }
-                required
               />
-              <span className="error-message">Please fill this field.</span>
+              <span className="error-message">{errorMsg.zipCode}</span>
             </fieldset>
 
             <label htmlFor="department">Department</label>
@@ -216,8 +249,8 @@ function Home() {
               handleSelect={(e) =>
                 setNewEmployee({ ...newEmployee, department: e })
               }
-              required
             />
+            <span className="error-message">{errorMsg.department}</span>
           </form>
 
           <button

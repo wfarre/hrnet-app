@@ -1,12 +1,10 @@
-import { createSlice, Slice } from "@reduxjs/toolkit";
-import { logDOM } from "@testing-library/react";
-// import { employees } from "../data/employeeData";
+import { createSlice } from "@reduxjs/toolkit";
 import EmployeeFactory from "../Factories/EmployeeFactory";
 
 import { selectEmployees } from "../selectors";
 
 const initialState = {
-  data: null,
+  data: [],
   error: null,
   status: "void",
 };
@@ -28,7 +26,7 @@ const { actions, reducer } = createSlice({
       }
       if (draft.status === "resolved") {
         draft.status = "updating";
-        draft.data = null;
+        draft.data = [];
         draft.error = null;
         return;
       }
@@ -56,61 +54,35 @@ export const fetchEmployees = () => {
 
     const status = selectEmployees(getState()).status;
     console.log(status);
-    dispatch(actions.fetching());
 
     if (status === "pending" || status === "updating") {
       return;
     }
 
+    dispatch(actions.fetching());
+
     console.log("heilo");
 
     try {
       // on utilise fetch pour faire la requête
-      const response = await fetch("../src/data/photographers.json", {
+      const response = await fetch("../assets/data/employeedata.json", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
-      console.log(response);
+      await console.log(response);
       const data = await response.json();
       console.log("hello");
       console.log(data);
+      let employees = data.map((employee) => {
+        return new EmployeeFactory(employee, "json");
+      });
+      console.log(employees);
       dispatch(actions.resolved(data));
     } catch (error) {
       dispatch(actions.rejected(error));
     }
-    // await fetch("../data/employeedata.json", {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    // })
-    // await fetch("../data/employees.json", {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    // })
-    //   .then((res) => {
-    //     console.log("hello");
-    //     return res.json();
-    //   })
-    //   .then(
-    //     (data) => {
-    //       console.log(data);
-    //       console.log("hi");
-    //       const employees = data.map((employee) => {
-    //         return EmployeeFactory(employee, "api");
-    //       });
-    //       dispatch(actions.resolved(employees));
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       dispatch(actions.rejected(error));
-    //     }
-    //   );
   };
 };
 

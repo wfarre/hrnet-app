@@ -143,3 +143,9 @@ label {
   fill: #0062ff;
   transition: all 300ms;
 }
+
+.error-message {
+  color: red;
+  font-size: 13px;
+  display: block;
+}

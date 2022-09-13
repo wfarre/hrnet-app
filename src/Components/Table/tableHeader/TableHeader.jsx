@@ -47,7 +47,7 @@ const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
             : "icon-wrapper "
         }
       >
-        <Arrow className="icon icon--arrow" />
+        <Arrow className="icon icon--triangle" />
       </div>
     </li>
   );

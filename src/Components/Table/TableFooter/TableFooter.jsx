@@ -38,7 +38,7 @@ const TableFooter = ({
     <footer className="employee-table__footer">
       <div className="employee-table__footer__index">
         <p>
-          Showing {startIndex + 1} to{" "}
+          Showing {numberEntries === 0 ? 0 : startIndex + 1} to{" "}
           {lastEmployeeIndex >= numberEntries
             ? numberEntries
             : lastEmployeeIndex}{" "}

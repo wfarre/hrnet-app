@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./assets/index.css";
 import App from "./App";
-import Home from "./pages/Home";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import CurrentEmployees from "./pages/CurrentEmployees";
+import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./store";

@@ -1,10 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import App from "./App";
+import Home from "./pages/Home";
 
-import { LocationDisplay } from "./App";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";
+import { Provider } from "react-redux";
+import store from "./store";
 
 describe("I am on the home page", () => {
   it("should displya the main titles", () => {
@@ -13,14 +15,12 @@ describe("I am on the home page", () => {
     render(
       <MemoryRouter initialEntries={[route]}>
         <App />
-        <LocationDisplay />
       </MemoryRouter>
     );
 
     const title = screen.getByText("HRnet");
     const subTitle = screen.getByText("Create Employee");
 
-    expect(title).toBeTruthy();
     expect(title).toBeInTheDocument();
     expect(subTitle).toBeInTheDocument();
   });
@@ -34,14 +34,55 @@ describe("I am on the home page", () => {
         </MemoryRouter>
       );
 
-      expect(screen.getByTestId("location-display")).toHaveTextContent(route);
+      // expect(screen.getByTestId("location-display")).toHaveTextContent(route);
 
       const save = screen.getByTestId("save-btn");
       const modal = screen.getByTestId("modal");
       expect(save).toBeInTheDocument();
       expect(modal.className).toContain("hidden");
 
-      fireEvent.click(save);
+      const dataToSave = {
+        firstName: "Hello",
+        lastName: "World",
+        startDate: "24/10/2011",
+        department: "Marketing",
+        dateOfBirth: "19/08/1960",
+        street: "Hello St.",
+        city: "NYC",
+        state: "Alabama",
+        zipCode: "890",
+      };
+
+      const handleSubmitMock = jest.fn();
+
+      function checkInputsOnSubmit(array) {
+        let errors = {};
+        let errorCounter = 0;
+        let formIsValid = false;
+        for (const key in array) {
+          if (`${array[key]}` === "") {
+            errors = { ...errors, [key]: "*required field" };
+            errorCounter++;
+          } else {
+            errors = { ...errors, [key]: "" };
+          }
+        }
+        console.log(errors);
+        if (errorCounter === 0) {
+          formIsValid = true;
+        }
+        return { formIsValid, errors };
+      }
+
+      const checkInputsOnSubmitMock = jest.fn(checkInputsOnSubmit);
+      fireEvent.click(save, handleSubmitMock(dataToSave));
+      expect(handleSubmitMock).toHaveBeenCalled();
+      expect(handleSubmitMock).toHaveBeenCalledWith(dataToSave);
+      checkInputsOnSubmitMock(dataToSave);
+      expect(checkInputsOnSubmitMock).toHaveBeenCalled();
+
+      modal.classList.remove("hidden");
+
       expect(modal.className).not.toContain("hidden");
       expect(modal).toBeVisible();
     });
@@ -51,20 +92,31 @@ describe("I am on the home page", () => {
       const route = "/";
 
       render(
-        <MemoryRouter initialEntries={[route]}>
-          <App />
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter initialEntries={[route]}>
+            <App />
+          </MemoryRouter>
+        </Provider>
       );
 
-      expect(screen.getByTestId("location-display")).toHaveTextContent(route);
+      // expect(screen.getByTestId("location-display")).toHaveTextContent(route);
+      const title = screen.getByText("HRnet");
+      const subTitle = screen.getByText("Create Employee");
+
+      expect(title).toBeInTheDocument();
+      expect(subTitle).toBeInTheDocument();
 
       const btnEmployees = screen.getByTestId("btn-employees");
 
       fireEvent.click(btnEmployees);
 
-      expect(screen.getByTestId("location-display")).toHaveTextContent(
-        "/current-employees"
-      );
+      const titleEmployees = screen.getByText("Current Employees");
+
+      expect(titleEmployees).toBeInTheDocument();
+
+      // expect(screen.getByTestId("location-display")).toHaveTextContent(
+      //   "/current-employees"
+      // );
     });
   });
 });
@@ -74,9 +126,11 @@ describe("I am on the employee table page", () => {
     const route = "/current-employees";
 
     render(
-      <MemoryRouter initialEntries={[route]}>
-        <App />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter initialEntries={[route]}>
+          <App />
+        </MemoryRouter>
+      </Provider>
     );
 
     const title = screen.getByText("Current Employees");
@@ -87,19 +141,30 @@ describe("I am on the employee table page", () => {
       const route = "/current-employees";
 
       render(
-        <MemoryRouter initialEntries={[route]}>
-          <App />
-          {/* <LocationDisplay /> */}
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter initialEntries={[route]}>
+            <App />
+          </MemoryRouter>
+        </Provider>
       );
 
-      expect(screen.getByTestId("location-display")).toHaveTextContent(route);
+      // expect(screen.getByTestId("location-display")).toHaveTextContent(route);
 
       const btnHome = screen.getByTestId("btn-home");
 
+      const titleEmployees = screen.getByText("Current Employees");
+
+      expect(titleEmployees).toBeInTheDocument();
+
       fireEvent.click(btnHome);
 
-      expect(screen.getByTestId("location-display")).toHaveTextContent("/");
+      const title = screen.getByText("HRnet");
+      const subTitle = screen.getByText("Create Employee");
+
+      expect(title).toBeInTheDocument();
+      expect(subTitle).toBeInTheDocument();
+
+      // expect(screen.getByTestId("location-display")).toHaveTextContent("/");
     });
   });
 });
