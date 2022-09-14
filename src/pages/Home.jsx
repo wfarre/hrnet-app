@@ -67,10 +67,24 @@ function Home() {
     let errors = {};
     let errorCounter = 0;
     let formIsValid = false;
+    let textPattern = /^[A-Za-z][A-Za-z0-9_-]{1,29}$/;
+    let zipCodePattern = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
     for (const key in newEmployee) {
       if (`${newEmployee[key]}` === "") {
         errors = { ...errors, [key]: "*required field" };
         errorCounter++;
+      } else if (
+        !`${newEmployee[key]}`.match(textPattern) &&
+        (key === "lastName" || key === "firstName")
+      ) {
+        errors = { ...errors, [key]: "Invalid input" };
+        errorCounter++;
+      } else if (key === "zipCode") {
+        const zipCode = parseInt(`${newEmployee[key]}`);
+        if (!zipCodePattern.test(zipCode)) {
+          errors = { ...errors, [key]: "Invalid input" };
+          errorCounter++;
+        }
       } else {
         errors = { ...errors, [key]: "" };
       }
