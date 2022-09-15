@@ -1,8 +1,7 @@
-// import "./App.css";
 import { Select } from "select-react-component/dist";
 import { states } from "../assets/data/statesData";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "../Components/Modal/Modal";
 
 import { ReactComponent as Arrow } from "../assets/images/arrow-right-solid.svg";
@@ -11,7 +10,6 @@ import { ReactComponent as Save } from "../assets/images/save-icon.svg";
 import DatePicker from "../Components/DatePicker/DatePicker";
 
 function Home() {
-  // console.log(states);
   const [modalOpen, setModalOpen] = useState(false);
   const [newEmployee, setNewEmployee] = useState({
     firstName: "",
@@ -63,7 +61,7 @@ function Home() {
     }
   };
 
-  function checkInputsOnSubmit(errorObject) {
+  function checkInputsOnSubmit() {
     let errors = {};
     let errorCounter = 0;
     let formIsValid = false;
@@ -100,11 +98,6 @@ function Home() {
     setModalOpen(newModalState);
   };
 
-  useEffect(() => {
-    console.log(newEmployee);
-  }, [newEmployee]);
-
-  console.log(stateNames);
   return (
     <div className="Home">
       <main className="main">
@@ -155,9 +148,7 @@ function Home() {
             <label className="label" htmlFor="date-of-birth">
               Date of Birth
             </label>
-            {/* <input id="date-of-birth" type="date" /> */}
             <DatePicker
-              // value={empl}
               className="input"
               value={newEmployee.dateOfBirth}
               handleDate={(date) => {
@@ -170,9 +161,7 @@ function Home() {
             <label className="label" htmlFor="start-date">
               Start Date
             </label>
-            {/* <input id="start-date" type="date" /> */}
             <DatePicker
-              // value={newEmployee.firstName}
               className="input"
               value={newEmployee.startDate}
               handleDate={(date) => {

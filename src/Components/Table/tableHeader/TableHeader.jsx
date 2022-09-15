@@ -1,11 +1,7 @@
 import { ReactComponent as Arrow } from "./caret-down-solid.svg";
 
 const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
-  //   console.log(id);
-  //   console.log(title);
   const handleClick = (e) => {
-    console.log("badaboum");
-
     let counter = clickCounter;
     let id = prevId;
     let type = null;

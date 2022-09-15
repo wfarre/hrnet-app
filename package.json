@@ -24,7 +24,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-toolkit": "^1.1.2",
-    "select-react-component": "^0.1.4",
+    "select-react-component": "^0.1.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
