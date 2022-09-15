@@ -34,8 +34,6 @@ describe("I am on the home page", () => {
         </MemoryRouter>
       );
 
-      // expect(screen.getByTestId("location-display")).toHaveTextContent(route);
-
       const save = screen.getByTestId("save-btn");
       const modal = screen.getByTestId("modal");
       expect(save).toBeInTheDocument();
@@ -99,7 +97,6 @@ describe("I am on the home page", () => {
         </Provider>
       );
 
-      // expect(screen.getByTestId("location-display")).toHaveTextContent(route);
       const title = screen.getByText("HRnet");
       const subTitle = screen.getByText("Create Employee");
 
@@ -113,10 +110,6 @@ describe("I am on the home page", () => {
       const titleEmployees = screen.getByText("Current Employees");
 
       expect(titleEmployees).toBeInTheDocument();
-
-      // expect(screen.getByTestId("location-display")).toHaveTextContent(
-      //   "/current-employees"
-      // );
     });
   });
 });
@@ -148,8 +141,6 @@ describe("I am on the employee table page", () => {
         </Provider>
       );
 
-      // expect(screen.getByTestId("location-display")).toHaveTextContent(route);
-
       const btnHome = screen.getByTestId("btn-home");
 
       const titleEmployees = screen.getByText("Current Employees");
@@ -163,8 +154,6 @@ describe("I am on the employee table page", () => {
 
       expect(title).toBeInTheDocument();
       expect(subTitle).toBeInTheDocument();
-
-      // expect(screen.getByTestId("location-display")).toHaveTextContent("/");
     });
   });
 });
