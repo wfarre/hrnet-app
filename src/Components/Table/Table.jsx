@@ -1,10 +1,14 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { ascendingSort, descendingSort } from "../../utils/sort";
+import "./Table.css";
+import React, { Suspense } from "react";
+import { useState, useEffect, lazy } from "react";
 import { tableHeaders } from "../../assets/data/tableHeaders";
 import TableHeader from "./tableHeader/TableHeader";
 import TableFooter from "./TableFooter/TableFooter";
-import EmployeeCard from "./EmployeeCard.jsx/EmployeeCard";
-import { ascendingSort, descendingSort } from "../../utils/sort";
+// import EmployeeCard from "./EmployeeCard.jsx/EmployeeCard";
+const EmployeeCard = lazy(() => import("./EmployeeCard.jsx/EmployeeCard"));
+
+const renderLoader = () => <p>Loading</p>;
 
 const Table = ({ employees }) => {
   const [numberEntries, setNumberEntries] = useState(0);
@@ -141,10 +145,12 @@ const Table = ({ employees }) => {
               <p className="empty-text">No data available in table</p>
             </div>
           ) : (
-            data.map((employee, key = { startIndex }) => {
-              key++;
-              return <EmployeeCard key={key} employee={employee} />;
-            })
+            <Suspense fallback={renderLoader()}>
+              {data.map((employee, key = { startIndex }) => {
+                key++;
+                return <EmployeeCard key={key} employee={employee} />;
+              })}
+            </Suspense>
           )}
         </div>
       </div>
