@@ -89,46 +89,6 @@ label {
   display: none;
 }
 
-.modal__content {
-  position: fixed;
-  top: 50vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  width: 40%;
-  height: 20px;
-  padding: 20px;
-  border-radius: 15px 0 15px 15px;
-  opacity: 1;
-  background-color: #fffffc;
-  z-index: 1;
-}
-
-.modal__content > .icon-wrapper {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  top: -10px;
-  right: -10px;
-  z-index: 10;
-}
-
-.icon--close {
-  fill: #0062ff;
-}
-
-.modal__bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: hsl(0, 0%, 0%, 0.2);
-}
-
-.hidden {
-  display: none;
-}
-
 .date-picker input {
   padding: 5px;
   padding-left: 10px;

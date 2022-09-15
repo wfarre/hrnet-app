@@ -97,11 +97,6 @@
   column-gap: 16px;
 }
 
-.employee-info__item {
-  /* text-align: center; */
-  /* justify-self: center; */
-}
-
 .employee-info:nth-child(odd) {
   background-color: #fffffc;
 }

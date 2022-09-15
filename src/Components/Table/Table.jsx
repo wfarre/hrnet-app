@@ -5,7 +5,6 @@ import { useState, useEffect, lazy } from "react";
 import { tableHeaders } from "../../assets/data/tableHeaders";
 import TableHeader from "./tableHeader/TableHeader";
 import TableFooter from "./TableFooter/TableFooter";
-// import EmployeeCard from "./EmployeeCard.jsx/EmployeeCard";
 const EmployeeCard = lazy(() => import("./EmployeeCard.jsx/EmployeeCard"));
 
 const renderLoader = () => <p>Loading</p>;

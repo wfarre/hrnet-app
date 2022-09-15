@@ -71,10 +71,7 @@ export const fetchEmployees = () => {
           Accept: "application/json",
         },
       });
-      await console.log(response);
       const data = await response.json();
-      console.log("hello");
-      console.log(data);
       let employees = data.map((employee) => {
         return new EmployeeFactory(employee, "json");
       });
