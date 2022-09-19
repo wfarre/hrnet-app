@@ -42,6 +42,14 @@ label {
 .input {
   padding: 5px;
   padding-left: 10px;
+  border-color: #c5c5c5;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.input:hover {
+  border-color: #222222;
 }
 
 .button {

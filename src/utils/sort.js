@@ -1,5 +1,12 @@
 import { formateDate } from "./formateDate";
 
+/**
+ *
+ * @param {*} data
+ * @param {*} dataType
+ * @param {*} id
+ * @returns sorted array
+ */
 const ascendingSort = (data, dataType, id) => {
   switch (dataType) {
     case "string":
@@ -17,6 +24,13 @@ const ascendingSort = (data, dataType, id) => {
   }
 };
 
+/**
+ *
+ * @param {*} data
+ * @param {*} dataType
+ * @param {*} id
+ * @returns sorted array
+ */
 const descendingSort = (data, dataType, id) => {
   switch (dataType) {
     case "string":

@@ -66,6 +66,7 @@
 
 .nav-btn:hover {
   cursor: pointer;
+  color: #0062ff;
 }
 
 .table__header__content {
@@ -137,4 +138,38 @@
 
 .descending {
   transform: rotateZ(180deg);
+}
+
+.neutral {
+  transform: rotate(270deg);
+}
+
+.page-btn {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  background-color: #0062ff;
+  border: none;
+  color: #fffffc;
+  transition: all 300ms;
+}
+
+.page-btn:hover {
+  cursor: pointer;
+  color: #0062ff;
+  background-color: #fffffc;
+  transition: all 300ms;
+}
+
+.search-input {
+  padding: 5px;
+  padding-left: 10px;
+  border-color: #c5c5c5;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.search-input:hover {
+  border-color: #222222;
 }

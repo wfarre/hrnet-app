@@ -40,6 +40,8 @@ const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
         className={
           clickCounter === 2 && prevId === id
             ? "icon-wrapper descending"
+            : clickCounter === 0 || prevId !== id
+            ? "icon-wrapper neutral"
             : "icon-wrapper "
         }
       >

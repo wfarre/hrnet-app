@@ -1,10 +1,9 @@
 {
   "name": "hrnet-app",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "http://.",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.0.0-alpha.7",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/x-date-pickers": "^5.0.0",
@@ -16,7 +15,7 @@
     "dayjs": "^1.11.5",
     "fun-lib": "^0.1.0",
     "moment": "^2.29.4",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
@@ -24,12 +23,11 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-toolkit": "^1.1.2",
-    "select-react-component": "^0.1.9",
+    "select-react-component": "^0.2.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "starto": "craco start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -51,5 +49,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "craco.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wfarre/hrnet-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wfarre/hrnet-app/issues"
   }
 }

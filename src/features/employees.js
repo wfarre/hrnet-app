@@ -83,6 +83,43 @@ export const fetchEmployees = () => {
   };
 };
 
+export const createNewEmployee = (newEmployee) => {
+  return async (dispatch, getState) => {
+    console.log("get in it");
+
+    const status = selectEmployees(getState()).status;
+    console.log(status);
+
+    if (status === "pending" || status === "updating") {
+      return;
+    }
+
+    dispatch(actions.fetching());
+
+    console.log("heilo");
+
+    try {
+      // on utilise fetch pour faire la requête
+      const response = await fetch("../assets/data/employeedata.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      let employees = data.map((employee) => {
+        return new EmployeeFactory(employee, "json");
+      });
+      console.log(employees);
+      const mynewdata = data.push(newEmployee);
+      console.log(mynewdata);
+      dispatch(actions.resolved(data.push(newEmployee)));
+    } catch (error) {
+      dispatch(actions.rejected(error));
+    }
+  };
+};
+
 function setVoidIfUndefined(draft, credentials) {
   if (draft[credentials] === undefined) {
     draft[credentials] = { status: "void" };
