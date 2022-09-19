@@ -19,11 +19,7 @@ export default function DatePicker({ handleDate }) {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={3}>
         <DesktopDatePicker
-          //   label="Date desktop"
           className="date-picker"
-          // sx={{
-          //   padding: 0 !important,
-          // }}
           inputFormat="DD/MM/YYYY"
           value={value === null ? "06/09/2022" : value}
           onChange={handleChange}

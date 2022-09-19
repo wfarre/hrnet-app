@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 700;
+  color: #0062ff;
 }
 
 .main {
@@ -17,39 +19,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 10px;
-}
-
-.address {
-  width: 100%;
-  margin-top: 10%;
-}
-
-.title {
-  font-weight: 700;
-  color: #0062ff;
-}
-
-.label {
-  color: rgb(0, 0, 32);
-}
-
-.input {
-  padding: 5px;
-  padding-left: 10px;
-  border-color: #c5c5c5;
-  border-width: 1px;
-  border-radius: 5px;
-  width: 70%;
-}
-
-.input:hover {
-  border-color: #222222;
 }
 
 .button {
@@ -110,10 +79,4 @@ label {
 .button:hover .icon {
   fill: #0062ff;
   transition: all 300ms;
-}
-
-.error-message {
-  color: red;
-  font-size: 13px;
-  display: block;
 }

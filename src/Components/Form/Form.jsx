@@ -1,6 +1,7 @@
 import { states } from "../../assets/data/statesData";
 import DatePicker from "../DatePicker/DatePicker";
 import { Select } from "select-react-component";
+import "./Form.css";
 
 const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
   const handleChange = (input, type) => {

@@ -1,0 +1,30 @@
+.label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+  color: rgb(0, 0, 32);
+}
+
+.address {
+  width: 100%;
+  margin-top: 10%;
+}
+
+.input {
+  padding: 5px;
+  padding-left: 10px;
+  border-color: #c5c5c5;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.input:hover {
+  border-color: #222222;
+}
+
+.error-message {
+  color: red;
+  font-size: 13px;
+  display: block;
+}
