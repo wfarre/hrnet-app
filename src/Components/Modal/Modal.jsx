@@ -1,5 +1,5 @@
-import { ReactComponent as CloseIcon } from "./close-icon.svg";
-import "./Modal.css";
+import { ReactComponent as CloseIcon } from "./assets/close-icon.svg";
+import "./assets/Modal.css";
 
 const Modal = ({ modalOpen, handleModal }) => {
   const handleClick = () => {

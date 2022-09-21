@@ -1,5 +1,5 @@
 import { ascendingSort, descendingSort } from "../../utils/sort";
-import "./Table.css";
+import "./assets/Table.css";
 import React, { Suspense } from "react";
 import { useState, useEffect, lazy } from "react";
 import { tableHeaders } from "../../assets/data/tableHeaders";

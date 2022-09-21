@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./LinkButton.css";
+import "./assets/LinkButton.css";
 
 export default function LinkButton({ path, icon, btnText, dataTestId }) {
   return (

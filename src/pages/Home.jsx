@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 
 import { checkInputsOnSubmit } from "../utils/validation";
 
 import { ReactComponent as Arrow } from "../assets/images/arrow-right-solid.svg";
 import { ReactComponent as Save } from "../assets/images/save-icon.svg";
-import Form from "../Components/Form/Form";
-import Modal from "../Components/Modal/Modal";
+// import Form from "../Components/Form/Form";
+// import Modal from "../Components/Modal/Modal";
 import LinkButton from "../Components/Buttons/LinkButton";
+
+const Form = lazy(() => import("../Components/Form/Form"));
+const Modal = lazy(() => import("../Components/Modal/Modal"));
 
 function Home() {
   document.title = "HRnet - Create an employee";
@@ -76,13 +79,15 @@ function Home() {
             dataTestId="btn-employees"
           />
           <h2 className="title">Create Employee</h2>
-          <Form
-            setNewEmployee={(input, type) =>
-              setNewEmployee({ ...newEmployee, [type]: input })
-            }
-            errorMsg={errorMsg}
-            newEmployee={newEmployee}
-          />
+          <Suspense>
+            <Form
+              setNewEmployee={(input, type) =>
+                setNewEmployee({ ...newEmployee, [type]: input })
+              }
+              errorMsg={errorMsg}
+              newEmployee={newEmployee}
+            />
+          </Suspense>
 
           <button
             className="button button--save"
@@ -96,11 +101,13 @@ function Home() {
           </button>
         </div>
       </main>
-      <Modal
-        text={"Employee Created"}
-        modalOpen={modalOpen}
-        handleModal={(newModalState) => handleModal(newModalState)}
-      />
+      <Suspense>
+        <Modal
+          text={"Employee Created"}
+          modalOpen={modalOpen}
+          handleModal={(newModalState) => handleModal(newModalState)}
+        />
+      </Suspense>
     </div>
   );
 }

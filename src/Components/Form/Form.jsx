@@ -1,7 +1,7 @@
 import { states } from "../../assets/data/statesData";
 import DatePicker from "../DatePicker/DatePicker";
 import { Select } from "select-react-component";
-import "./Form.css";
+import "./assets/Form.css";
 
 const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
   const handleChange = (input, type) => {
@@ -115,7 +115,9 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         <span className="error-message">{errorMsg.zipCode}</span>
       </fieldset>
 
-      <label htmlFor="department">Department</label>
+      <label className="label" htmlFor="department">
+        Department
+      </label>
       <Select
         className="input"
         name="department"
