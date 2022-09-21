@@ -60,5 +60,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wfarre/hrnet-app/issues"
+  },
+  "devDependencies": {
+    "jest-watch-typeahead": "^0.6.5"
   }
 }
