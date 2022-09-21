@@ -1,13 +1,13 @@
 import "../assets/CurrentEmployees.css";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as HomeIcon } from "../assets/images/home.svg";
 import { fetchEmployees } from "../features/employees";
 import { selectEmployees } from "../selectors";
 import { useSelector, useDispatch } from "react-redux";
-// import Table from "../Components/Table/Table";
+import Table from "../Components/Table/Table";
 import LinkButton from "../Components/Buttons/LinkButton";
 
-const Table = lazy(() => import("../Components/Table/Table"));
+// const Table = lazy(() => import("../Components/Table/Table"));
 // const LinkButton = lazy(() => import("../Components/Buttons/LinkButton"));
 
 const CurrentEmployees = () => {
@@ -35,9 +35,7 @@ const CurrentEmployees = () => {
         <header className="page-header">
           <h1 className="page-header__content">Current Employees</h1>
         </header>
-        <Suspense>
-          <Table employees={employees} />
-        </Suspense>
+        <Table employees={employees} />
         <LinkButton
           path={"/"}
           btnText={"Home"}
