@@ -161,6 +161,11 @@
   transition: all 300ms;
 }
 
+.active {
+  color: #0062ff;
+  background-color: #fffffc;
+}
+
 .search-input {
   padding: 5px;
   padding-left: 10px;

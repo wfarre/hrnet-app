@@ -4,13 +4,23 @@ const TableFooter = ({
   entriesPerPage,
   lastEmployeeIndex,
   handleChangePage,
+  handlePageNumber,
+  pageNumber,
 }) => {
+  const numberOfPages = Math.ceil(numberEntries / entriesPerPage);
+  const pageBtnIndex = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    pageBtnIndex.push(i);
+  }
+
   const handlePrevious = () => {
     const newStartIndex =
       startIndex - entriesPerPage < 0
         ? startIndex
         : startIndex - entriesPerPage;
+    const newPage = pageNumber === 1 ? pageNumber : pageNumber - 1;
     handleChangePage(newStartIndex);
+    handlePageNumber(parseInt(newPage));
   };
 
   const handleNext = () => {
@@ -18,20 +28,15 @@ const TableFooter = ({
       startIndex - entriesPerPage > numberEntries
         ? startIndex
         : startIndex + entriesPerPage;
+    const newPage = pageNumber === numberOfPages ? pageNumber : pageNumber + 1;
     handleChangePage(newStartIndex);
+    handlePageNumber(parseInt(newPage));
   };
 
-  const numberOfPages = Math.ceil(numberEntries / entriesPerPage);
-  const pageBtnIndex = [];
-  for (let i = 1; i <= numberOfPages; i++) {
-    pageBtnIndex.push(i);
-  }
-
   const handlePageBtnClick = (e) => {
-    console.log(numberOfPages);
     const newStartIndex = e.target.id * entriesPerPage - entriesPerPage;
-    console.log(newStartIndex);
     handleChangePage(newStartIndex);
+    handlePageNumber(parseInt(e.target.id));
   };
 
   return (
@@ -52,8 +57,12 @@ const TableFooter = ({
         {pageBtnIndex.map((index) => {
           return (
             <button
-              className="page-btn"
               id={index}
+              className={
+                parseInt(pageNumber) === parseInt(index)
+                  ? "page-btn active"
+                  : "page-btn"
+              }
               key={index}
               onClick={handlePageBtnClick}
             >

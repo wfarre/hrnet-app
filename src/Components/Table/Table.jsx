@@ -25,6 +25,8 @@ const Table = ({ employees }) => {
   const [prevId, setPrevId] = useState("firstName");
   const [currentDataType, setCurrentDataType] = useState("string");
 
+  const [pageNumber, setPageNumber] = useState(1);
+
   function getEmployeeToDisplay(data, startIndex) {
     let newArray = [];
     for (let i = startIndex; i < endIndex; i++) {
@@ -32,6 +34,10 @@ const Table = ({ employees }) => {
     }
     return newArray;
   }
+
+  const handlePageNumber = (number) => {
+    setPageNumber(number);
+  };
 
   useEffect(() => {
     setLastEmployeeIndex(startIndex + entriesPerPage);
@@ -163,6 +169,8 @@ const Table = ({ employees }) => {
         numberEntries={numberEntries}
         startIndex={startIndex}
         handleChangePage={(newStartIndex) => setStartIndex(newStartIndex)}
+        pageNumber={pageNumber}
+        handlePageNumber={(number) => handlePageNumber(number)}
       />
     </section>
   );
