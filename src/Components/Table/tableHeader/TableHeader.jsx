@@ -4,29 +4,50 @@ const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
   const handleClick = (e) => {
     let counter = clickCounter;
     let id = prevId;
-    let type = null;
+    let datatype = type;
+    // if (
+    //   e.target.closest(".table__header__content__item").id !== prevId ||
+    //   prevId === null ||
+    //   clickCounter === 0
+    // ) {
+    //   counter = 1;
+    //   id = e.target.closest(".table__header__content__item").id;
+    //   type = e.target.closest(".table__header__content__item").type;
+    // }
+    // if (
+    //   e.target.closest(".table__header__content__item").id === prevId &&
+    //   clickCounter === 1
+    // ) {
+    //   counter = 2;
+    //   type = e.target.closest(".table__header__content__item").type;
+    // }
+    // if (clickCounter === 2) {
+    //   counter = 0;
+    //   id = null;
+    //   type = e.target.closest(".table__header__content__item").type;
+    // }
+
     if (
       e.target.closest(".table__header__content__item").id !== prevId ||
-      prevId === null ||
-      clickCounter === 0
+      prevId === null
     ) {
       counter = 1;
       id = e.target.closest(".table__header__content__item").id;
-      type = e.target.closest(".table__header__content__item").type;
+      datatype = e.target.closest(".table__header__content__item").type;
     }
     if (
       e.target.closest(".table__header__content__item").id === prevId &&
       clickCounter === 1
     ) {
       counter = 2;
-      type = e.target.closest(".table__header__content__item").type;
+      datatype = e.target.closest(".table__header__content__item").type;
     }
     if (clickCounter === 2) {
-      counter = 0;
-      id = null;
-      type = e.target.closest(".table__header__content__item").type;
+      counter = 1;
+      datatype = e.target.closest(".table__header__content__item").type;
     }
-    handleSort(counter, id, type);
+
+    handleSort(counter, id, datatype);
   };
   return (
     <li

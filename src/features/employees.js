@@ -65,7 +65,7 @@ export const fetchEmployees = () => {
 
     try {
       // on utilise fetch pour faire la requête
-      const response = await fetch("../assets/data/employeedata.json", {
+      let response = await fetch("../assets/data/employeedata.json", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",

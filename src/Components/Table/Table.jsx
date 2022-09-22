@@ -21,9 +21,9 @@ const Table = ({ employees }) => {
   const [endIndex, setEndIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
 
-  const [clickCounter, setClickCounter] = useState(0);
-  const [prevId, setPrevId] = useState(null);
-  const [currentDataType, setCurrentDataType] = useState(null);
+  const [clickCounter, setClickCounter] = useState(1);
+  const [prevId, setPrevId] = useState("firstName");
+  const [currentDataType, setCurrentDataType] = useState("string");
 
   function getEmployeeToDisplay(data, startIndex) {
     let newArray = [];
@@ -54,11 +54,11 @@ const Table = ({ employees }) => {
     if (clickCounter === 2) {
       setDataToDisplay(descendingSort(dataToDisplay, currentDataType, prevId));
     }
-    if (clickCounter === 0) {
-      setDataToDisplay(
-        dataToDisplay.sort((a, b) => a.firstName.localeCompare(b.firstName))
-      );
-    }
+    // if (clickCounter === 0) {
+    //   setDataToDisplay(
+    //     dataToDisplay.sort((a, b) => a.firstName.localeCompare(b.firstName))
+    //   );
+    // }
     setData(getEmployeeToDisplay(dataToDisplay, startIndex));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prevId, clickCounter, currentDataType]);
@@ -83,7 +83,11 @@ const Table = ({ employees }) => {
   }, [searchInput, employees]);
 
   useEffect(() => {
-    setData(getEmployeeToDisplay(dataToDisplay, startIndex));
+    const dataToSort = dataToDisplay;
+    const sortedData = ascendingSort(dataToSort, currentDataType, prevId);
+    const myEmployees = getEmployeeToDisplay(sortedData, startIndex);
+
+    setData(myEmployees);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endIndex]);
 
