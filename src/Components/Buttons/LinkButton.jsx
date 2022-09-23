@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./assets/LinkButton.css";
+import PropTypes from "prop-types";
 
 /**
  * React Component LinkButton
@@ -14,6 +15,13 @@ const LinkButton = ({ path, icon, btnText, dataTestId }) => {
       <span className="icon-wrapper">{icon}</span>
     </Link>
   );
+};
+
+LinkButton.propTypes = {
+  path: PropTypes.string,
+  icon: PropTypes.element,
+  btnText: PropTypes.string,
+  dataTestId: PropTypes.string,
 };
 
 export default LinkButton;

@@ -1,4 +1,5 @@
 import { ascendingSort, descendingSort } from "../../utils/sort";
+import PropTypes from "prop-types";
 import "./assets/Table.css";
 import React, { Suspense } from "react";
 import { useState, useEffect, lazy } from "react";
@@ -75,11 +76,6 @@ const Table = ({ employees }) => {
     if (clickCounter === 2) {
       setDataToDisplay(descendingSort(dataToDisplay, currentDataType, prevId));
     }
-    // if (clickCounter === 0) {
-    //   setDataToDisplay(
-    //     dataToDisplay.sort((a, b) => a.firstName.localeCompare(b.firstName))
-    //   );
-    // }
     setData(getEmployeeToDisplay(dataToDisplay, startIndex));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prevId, clickCounter, currentDataType]);
@@ -201,6 +197,10 @@ const Table = ({ employees }) => {
       />
     </section>
   );
+};
+
+Table.propTypes = {
+  employees: PropTypes.array,
 };
 
 export default Table;

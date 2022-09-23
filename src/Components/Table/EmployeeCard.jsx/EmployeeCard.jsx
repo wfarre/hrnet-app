@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 /**
  * React Component EmployeeCard
  * @param {*} param0
@@ -35,6 +37,10 @@ const EmployeeCard = ({ employee }) => {
       </div>
     </div>
   );
+};
+
+EmployeeCard.propTypes = {
+  employee: PropTypes.object,
 };
 
 export default EmployeeCard;

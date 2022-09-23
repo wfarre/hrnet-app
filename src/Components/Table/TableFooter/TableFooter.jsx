@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 /**
  * React component TableFooter
  * @param {*} param0
@@ -92,6 +94,16 @@ const TableFooter = ({
       </div>
     </footer>
   );
+};
+
+TableFooter.propTypes = {
+  startIndex: PropTypes.number,
+  numberEntries: PropTypes.number,
+  entriesPerPage: PropTypes.number,
+  lastEmployeeIndex: PropTypes.number,
+  handleChangePage: PropTypes.func,
+  handlePageNumber: PropTypes.func,
+  pageNumber: PropTypes.number,
 };
 
 export default TableFooter;

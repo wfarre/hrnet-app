@@ -2,6 +2,7 @@ import { states } from "../../assets/data/statesData";
 import DatePicker from "../DatePicker/DatePicker";
 import { Select } from "select-react-component";
 import "./assets/Form.css";
+import PropTypes from "prop-types";
 
 /**
  *
@@ -54,7 +55,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
           handleChange(newDateValue, `dateOfBirth`);
         }}
       />
-      <span className="error-message">{errorMsg.startDate}</span>
+      <span className="error-message">{errorMsg.dateOfBirth}</span>
 
       <label className="label" htmlFor="start-date">
         Start Date
@@ -67,7 +68,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
           handleChange(newDateValue, `startDate`);
         }}
       />
-      <span className="error-message">{errorMsg.dateOfBirth}</span>
+      <span className="error-message">{errorMsg.startDate}</span>
 
       <fieldset className="address">
         <legend>Address</legend>
@@ -136,6 +137,12 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
       <span className="error-message">{errorMsg.department}</span>
     </form>
   );
+};
+
+Form.propTypes = {
+  setNewEmployee: PropTypes.func,
+  errorMsg: PropTypes.object,
+  newEmployee: PropTypes.object,
 };
 
 export default Form;

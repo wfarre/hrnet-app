@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import PropTypes from "prop-types";
 
 /**
  * React componenet DatePicker
@@ -33,6 +34,10 @@ const DatePicker = ({ handleDate }) => {
       </Stack>
     </LocalizationProvider>
   );
+};
+
+DatePicker.propTypes = {
+  handleDate: PropTypes.func,
 };
 
 export default DatePicker;

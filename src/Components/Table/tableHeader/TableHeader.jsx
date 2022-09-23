@@ -1,4 +1,5 @@
 import { ReactComponent as Arrow } from "./caret-down-solid.svg";
+import PropTypes from "prop-types";
 
 /**
  * React component TableHeader
@@ -59,6 +60,15 @@ const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
       </div>
     </li>
   );
+};
+
+TableHeader.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.string,
+  title: PropTypes.string,
+  clickCounter: PropTypes.number,
+  prevId: PropTypes.string,
+  handleSort: PropTypes.func,
 };
 
 export default TableHeader;

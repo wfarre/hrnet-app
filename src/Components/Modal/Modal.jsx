@@ -1,5 +1,6 @@
 import { ReactComponent as CloseIcon } from "./assets/close-icon.svg";
 import "./assets/Modal.css";
+import PropTypes from "prop-types";
 
 /**
  * React Component Modal
@@ -29,6 +30,11 @@ const Modal = ({ modalOpen, handleModal }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  modalOpen: PropTypes.bool,
+  handleModal: PropTypes.func,
 };
 
 export default Modal;
