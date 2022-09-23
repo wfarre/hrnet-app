@@ -1,7 +1,15 @@
 import { ReactComponent as CloseIcon } from "./assets/close-icon.svg";
 import "./assets/Modal.css";
 
+/**
+ * React Component Modal
+ * @param {*} param0
+ * @returns Modal
+ */
 const Modal = ({ modalOpen, handleModal }) => {
+  /**
+   * close the modal on click on the close button
+   */
   const handleClick = () => {
     handleModal(false);
   };

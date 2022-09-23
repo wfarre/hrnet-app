@@ -7,8 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Table from "../Components/Table/Table";
 import LinkButton from "../Components/Buttons/LinkButton";
 
-// const Table = lazy(() => import("../Components/Table/Table"));
-// const LinkButton = lazy(() => import("../Components/Buttons/LinkButton"));
+/**
+ * React page CurrentEmployees
+ * @returns rendering the "current-employees" page
+ */
 
 const CurrentEmployees = () => {
   document.title = "HRnet - Current Employees";

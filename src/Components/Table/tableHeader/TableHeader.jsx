@@ -1,31 +1,19 @@
 import { ReactComponent as Arrow } from "./caret-down-solid.svg";
 
+/**
+ * React component TableHeader
+ * @param {*} param0
+ * @returns TableHeader component
+ */
 const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
+  /**
+   * On click on the header, it will update the paramaters to use the sorting function
+   * @param {*} e
+   */
   const handleClick = (e) => {
     let counter = clickCounter;
     let id = prevId;
     let datatype = type;
-    // if (
-    //   e.target.closest(".table__header__content__item").id !== prevId ||
-    //   prevId === null ||
-    //   clickCounter === 0
-    // ) {
-    //   counter = 1;
-    //   id = e.target.closest(".table__header__content__item").id;
-    //   type = e.target.closest(".table__header__content__item").type;
-    // }
-    // if (
-    //   e.target.closest(".table__header__content__item").id === prevId &&
-    //   clickCounter === 1
-    // ) {
-    //   counter = 2;
-    //   type = e.target.closest(".table__header__content__item").type;
-    // }
-    // if (clickCounter === 2) {
-    //   counter = 0;
-    //   id = null;
-    //   type = e.target.closest(".table__header__content__item").type;
-    // }
 
     if (
       e.target.closest(".table__header__content__item").id !== prevId ||
@@ -49,6 +37,7 @@ const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {
 
     handleSort(counter, id, datatype);
   };
+
   return (
     <li
       className="table__header__content__item"

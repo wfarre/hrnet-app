@@ -3,6 +3,11 @@ import DatePicker from "../DatePicker/DatePicker";
 import { Select } from "select-react-component";
 import "./assets/Form.css";
 
+/**
+ *
+ * @param {*} param0 setNewEmployee(function), errroMsg, newEmployee
+ * @returns Form components
+ */
 const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
   const handleChange = (input, type) => {
     setNewEmployee(input, type);

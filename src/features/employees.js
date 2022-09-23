@@ -48,6 +48,10 @@ const { actions, reducer } = createSlice({
   },
 });
 
+/**
+ * THe function will fetch the employees from the API (for now, from a json file)
+ * @returns array of employees
+ */
 export const fetchEmployees = () => {
   return async (dispatch, getState) => {
     console.log("get in it");

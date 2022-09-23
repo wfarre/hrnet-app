@@ -9,6 +9,11 @@ const EmployeeCard = lazy(() => import("./EmployeeCard.jsx/EmployeeCard"));
 
 const renderLoader = () => <p>Loading</p>;
 
+/**
+ * React Component Table
+ * @param {*} employees
+ * @returns Component Table
+ */
 const Table = ({ employees }) => {
   const [numberEntries, setNumberEntries] = useState(0);
   const [entriesPerPage, setEntriesPerPage] = useState(10);
@@ -27,14 +32,24 @@ const Table = ({ employees }) => {
 
   const [pageNumber, setPageNumber] = useState(1);
 
-  function getEmployeeToDisplay(data, startIndex) {
+  /**
+   *
+   * @param {*} data
+   * @param {*} startIndex
+   * @returns array of employees to display on one page
+   */
+  const getEmployeeToDisplay = (data, startIndex) => {
     let newArray = [];
     for (let i = startIndex; i < endIndex; i++) {
       newArray.push(data[i]);
     }
     return newArray;
-  }
+  };
 
+  /**
+   * update the page number
+   * @param {*} number
+   */
   const handlePageNumber = (number) => {
     setPageNumber(number);
   };
@@ -70,7 +85,13 @@ const Table = ({ employees }) => {
   }, [prevId, clickCounter, currentDataType]);
 
   useEffect(() => {
-    function getEmployeesBySearch(employees, searchInput) {
+    /**
+     *
+     * @param {*} employees
+     * @param {*} searchInput
+     * @returns array with the right employees
+     */
+    const getEmployeesBySearch = (employees, searchInput) => {
       if (searchInput === "") {
         setStartIndex(0);
         return employees;
@@ -84,7 +105,7 @@ const Table = ({ employees }) => {
             employee.lastName.toLowerCase().includes(searchInput.toLowerCase())
         );
       }
-    }
+    };
     setDataToDisplay(getEmployeesBySearch(employees, searchInput));
   }, [searchInput, employees]);
 
@@ -97,6 +118,12 @@ const Table = ({ employees }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endIndex]);
 
+  /**
+   * Update the counter, prevId and type before lauching the sort function
+   * @param {*} counter
+   * @param {*} id
+   * @param {*} type
+   */
   function handleSort(counter, id, type) {
     setClickCounter(counter);
     setPrevId(id);

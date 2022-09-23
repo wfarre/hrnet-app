@@ -4,7 +4,7 @@
  * @returns booleans: true if the number of errors is zero, false if there is at least one error
  * @returns object of errors
  */
-export function checkInputsOnSubmit(newEmployee) {
+export const checkInputsOnSubmit = (newEmployee) => {
   let errors = {};
   let errorCounter = 0;
   let formIsValid = false;
@@ -33,7 +33,7 @@ export function checkInputsOnSubmit(newEmployee) {
     formIsValid = true;
   }
   return { formIsValid, errors };
-}
+};
 
 /**
  * check if input name is correct

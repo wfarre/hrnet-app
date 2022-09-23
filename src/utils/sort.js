@@ -1,7 +1,7 @@
 import { formateDate } from "./formateDate";
 
 /**
- *
+ * sort an array by ascending order ( alpabetic, number or date)
  * @param {*} data
  * @param {*} dataType
  * @param {*} id
@@ -25,7 +25,7 @@ const ascendingSort = (data, dataType, id) => {
 };
 
 /**
- *
+ * sort an array by descending order ( alpabetic, number or date)
  * @param {*} data
  * @param {*} dataType
  * @param {*} id

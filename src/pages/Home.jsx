@@ -11,8 +11,13 @@ import LinkButton from "../Components/Buttons/LinkButton";
 const Form = lazy(() => import("../Components/Form/Form"));
 const Modal = lazy(() => import("../Components/Modal/Modal"));
 
-function Home() {
+/**
+ * React page Home ( Create employee)
+ * @return the rendering of my home page
+ */
+const Home = () => {
   document.title = "HRnet - Create an employee";
+
   const [modalOpen, setModalOpen] = useState(false);
   const [newEmployee, setNewEmployee] = useState({
     firstName: "",
@@ -38,6 +43,10 @@ function Home() {
     department: "",
   });
 
+  /**
+   * submit the form when click on the submit button
+   * @param {*} e
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newEmployee);
@@ -110,6 +119,6 @@ function Home() {
       </Suspense>
     </div>
   );
-}
+};
 
 export default Home;

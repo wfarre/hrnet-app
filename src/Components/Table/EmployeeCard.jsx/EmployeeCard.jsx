@@ -1,3 +1,8 @@
+/**
+ * React Component EmployeeCard
+ * @param {*} param0
+ * @returns Employee card with all employees informaiton
+ */
 const EmployeeCard = ({ employee }) => {
   return (
     <div className="employee-info">

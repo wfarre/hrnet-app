@@ -7,7 +7,12 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
-export default function DatePicker({ handleDate }) {
+/**
+ * React componenet DatePicker
+ * @param {*} param0
+ * @returns DatePicker component
+ */
+const DatePicker = ({ handleDate }) => {
   const [value, setValue] = useState(dayjs("2014-08-18T21:11:54"));
 
   const handleChange = (newValue) => {
@@ -28,4 +33,6 @@ export default function DatePicker({ handleDate }) {
       </Stack>
     </LocalizationProvider>
   );
-}
+};
+
+export default DatePicker;
