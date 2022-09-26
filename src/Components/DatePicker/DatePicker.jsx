@@ -42,8 +42,6 @@ const DatePicker = ({ handleDate, name, value }) => {
     //     />
     //   </Stack>
     // </LocalizationProvider>
-    // <div>
-    //   <label htmlFor="date-picker"></label>
     <DatePickerC
       name={name}
       id={name}
@@ -53,7 +51,6 @@ const DatePicker = ({ handleDate, name, value }) => {
       dateFormat="dd/MM/yyyy"
       placeholderText="dd/mm/yyyy"
     />
-    // </div>
   );
 };
 
