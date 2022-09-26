@@ -48,8 +48,8 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         Date of Birth
       </label>
       <DatePicker
-        name="date-of-birth"
-        className="input"
+        name={"date-of-birth"}
+        className={"input"}
         value={newEmployee.dateOfBirth}
         handleDate={(date) => {
           const newDateValue = new Date(date).toLocaleDateString();
@@ -62,8 +62,8 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         Start Date
       </label>
       <DatePicker
-        name="start-date"
-        className="input"
+        name={"start-date"}
+        className={"input"}
         value={newEmployee.startDate}
         handleDate={(date) => {
           const newDateValue = new Date(date).toLocaleDateString();

@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import App from "./App";
-import Home from "./pages/Home";
 
 import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";

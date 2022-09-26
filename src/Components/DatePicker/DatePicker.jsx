@@ -16,7 +16,7 @@ import "react-datepicker/dist/react-datepicker.css";
  * @param {*} param0
  * @returns DatePicker component
  */
-const DatePicker = ({ handleDate }) => {
+const DatePicker = ({ handleDate, name }) => {
   const [value, setValue] = useState();
   // const [startDate, setStartDate] = useState(new Date());
 
@@ -40,6 +40,7 @@ const DatePicker = ({ handleDate }) => {
     // <div>
     //   <label htmlFor="date-picker"></label>
     <DatePickerC
+      name={name}
       className="date-picker"
       selected={value}
       onChange={handleChange}
