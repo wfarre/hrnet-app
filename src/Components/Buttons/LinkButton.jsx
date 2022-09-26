@@ -5,7 +5,10 @@ import PropTypes from "prop-types";
 
 /**
  * React Component LinkButton
- * @param {*} param0
+ * @param {string} path - the path the desired page
+ * @param {element} icon - the elemnt of an icon if there is any
+ * @param {string} btnText - the text inside the button
+ * @param {string} dataTestId - data to test the button
  * @returns Button component
  */
 const LinkButton = ({ path, icon, btnText, dataTestId }) => {

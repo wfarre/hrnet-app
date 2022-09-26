@@ -6,7 +6,10 @@ import PropTypes from "prop-types";
 
 /**
  *
- * @param {*} param0 setNewEmployee(function), errroMsg, newEmployee
+ * @param {function} setNewEmployee - For every change in eact input update new employee's information.
+ * @param {Object} errorMsg - Error messages if there is any error to display.
+ * @param {Object} newEmployee - New employee's information which will submit when click on the save button.
+ *
  * @returns Form components
  */
 const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {

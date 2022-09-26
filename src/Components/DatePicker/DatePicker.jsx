@@ -13,7 +13,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 /**
  * React componenet DatePicker
- * @param {*} param0
+ * @param {function} handleDate - update the date in the parent component
+ * @param {string} name - to pass name and id for labelling mainly
+ * @param {string} value - selected date
  * @returns DatePicker component
  */
 const DatePicker = ({ handleDate, name, value }) => {
@@ -56,6 +58,8 @@ const DatePicker = ({ handleDate, name, value }) => {
 
 DatePicker.propTypes = {
   handleDate: PropTypes.func,
+  name: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default DatePicker;

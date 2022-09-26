@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 /**
  * React Component EmployeeCard
- * @param {*} param0
+ * @param {Object} employee - employee's information
  * @returns Employee card with all employees informaiton
  */
 const EmployeeCard = ({ employee }) => {

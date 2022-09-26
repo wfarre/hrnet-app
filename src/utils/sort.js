@@ -2,9 +2,9 @@ import { formateDate } from "./formateDate";
 
 /**
  * sort an array by ascending order ( alpabetic, number or date)
- * @param {*} data
- * @param {*} dataType
- * @param {*} id
+ * @param {string} data
+ * @param {string} dataType
+ * @param {string} id
  * @returns sorted array
  */
 const ascendingSort = (data, dataType, id) => {
@@ -27,9 +27,9 @@ const ascendingSort = (data, dataType, id) => {
 
 /**
  * sort an array by descending order ( alpabetic, number or date)
- * @param {*} data
- * @param {*} dataType
- * @param {*} id
+ * @param {string} data
+ * @param {string} dataType
+ * @param {string} id
  * @returns sorted array
  */
 const descendingSort = (data, dataType, id) => {

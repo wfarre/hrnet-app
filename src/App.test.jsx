@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 describe("I am on the home page", () => {
-  it("should displya the main titles", () => {
+  it("should display the main titles", () => {
     const route = "/";
 
     render(

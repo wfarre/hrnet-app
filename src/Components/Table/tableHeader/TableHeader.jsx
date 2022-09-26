@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 
 /**
  * React component TableHeader
- * @param {*} param0
+ * @param {string} id - id of the header
+ * @param {string} type - type of the data of the column(string, number, date). Important for sorting.
+ * @param {string} title - title of the column header
+ * @param {number} clickCounter - number of click to check if we do an ascending sort or descending sort
+ * @param {string} prevId - previous id to compare before the sort and adjust the clickCounter
+ * @param {function} handleSort - it will pass the data to do the sorting
  * @returns TableHeader component
  */
 const TableHeader = ({ id, type, title, clickCounter, prevId, handleSort }) => {

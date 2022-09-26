@@ -1,6 +1,6 @@
 /**
  * This function will check if there is a an error in the form
- * @param {*} newEmployee
+ * @param {Object} newEmployee
  * @returns booleans: true if the number of errors is zero, false if there is at least one error
  * @returns object of errors
  */
@@ -37,7 +37,7 @@ export const checkInputsOnSubmit = (newEmployee) => {
 
 /**
  * check if input name is correct
- * @param {*} name
+ * @param {string} name
  * @returns boolean
  */
 const checkName = (name) => {
@@ -47,7 +47,7 @@ const checkName = (name) => {
 
 /**
  * check if the zipCode is correct i.e. number with 5 digits
- * @param {*} zipCode
+ * @param {string} zipCode
  * @returns boolean
  */
 const checkZipCode = (zipCode) => {

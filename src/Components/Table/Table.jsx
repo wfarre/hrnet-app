@@ -12,7 +12,7 @@ const renderLoader = () => <p>Loading</p>;
 
 /**
  * React Component Table
- * @param {*} employees
+ * @param {Array} employees - Array of employees
  * @returns Component Table
  */
 const Table = ({ employees }) => {

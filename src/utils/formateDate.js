@@ -1,6 +1,6 @@
 /**
  * change the date to an array to be able sort it after
- * @param {*} date
+ * @param {string} date
  * @returns array
  */
 export function formateDate(date) {

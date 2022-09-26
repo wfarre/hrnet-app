@@ -1,11 +1,8 @@
 import React, { lazy, Suspense, useState } from "react";
 
 import { checkInputsOnSubmit } from "../utils/validation";
-
 import { ReactComponent as Arrow } from "../assets/images/arrow-right-solid.svg";
 import { ReactComponent as Save } from "../assets/images/save-icon.svg";
-// import Form from "../Components/Form/Form";
-// import Modal from "../Components/Modal/Modal";
 import LinkButton from "../Components/Buttons/LinkButton";
 import { createNewEmployee } from "../features/employees";
 import { useDispatch } from "react-redux";

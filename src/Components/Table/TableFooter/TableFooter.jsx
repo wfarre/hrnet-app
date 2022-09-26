@@ -2,7 +2,13 @@ import PropTypes from "prop-types";
 
 /**
  * React component TableFooter
- * @param {*} param0
+ * @param {number} startIndex - index in the array from where we start to display data
+ * @param {number} numberEntries - number total of entries
+ * @param {number} entriesPerPage - number total of entries displayed by page
+ * @param {number} lastEmployeeIndex - the index of the last employee displayed on the page
+ * @param {function} handleChangePage - allow to change the employees displayed on the page
+ * @param {function} handlePageNumber - allow to pass the new page index to the parent element
+ * @param {number} pageNumber - index of the page
  * @returns TableFoonter component
  */
 const TableFooter = ({
