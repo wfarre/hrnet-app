@@ -37,7 +37,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
       </label>
       <input
         type="text"
-        id="last-name"
+        name="last-name"
         className="input"
         value={newEmployee.lastName}
         onChange={(e) => handleChange(e.target.value, `lastName`)}
@@ -48,7 +48,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         Date of Birth
       </label>
       <DatePicker
-        id="date-of-birth"
+        name="date-of-birth"
         className="input"
         value={newEmployee.dateOfBirth}
         handleDate={(date) => {

@@ -37,16 +37,15 @@ const DatePicker = ({ handleDate }) => {
     //     />
     //   </Stack>
     // </LocalizationProvider>
-    <div>
-      <label htmlFor="date-picker"></label>
-      <DatePickerC
-        id="date-picker"
-        className="date-picker"
-        selected={value}
-        onChange={handleChange}
-        dateFormat="dd/MM/yyyy"
-      />
-    </div>
+    // <div>
+    //   <label htmlFor="date-picker"></label>
+    <DatePickerC
+      className="date-picker"
+      selected={value}
+      onChange={handleChange}
+      dateFormat="dd/MM/yyyy"
+    />
+    // </div>
   );
 };
 
