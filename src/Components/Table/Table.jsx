@@ -95,10 +95,10 @@ const Table = ({ employees }) => {
         setStartIndex(0);
         return employees.filter(
           (employee) =>
-            employee.firstName
+            employee._firstName
               .toLowerCase()
               .includes(searchInput.toLowerCase()) ||
-            employee.lastName.toLowerCase().includes(searchInput.toLowerCase())
+            employee._lastName.toLowerCase().includes(searchInput.toLowerCase())
         );
       }
     };
