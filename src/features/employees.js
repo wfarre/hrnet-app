@@ -80,37 +80,35 @@ export const fetchEmployees = () => {
     dispatch(actions.fetching());
 
     //As we don't have a backend, we use the local storage as a backend
-    let myLocalData = JSON.parse(localStorage.getItem("employeeData"));
-    const employeeData = myLocalData.map((employee) => {
-      return JSON.parse(JSON.stringify(new EmployeeFactory(employee, "json")));
-    });
+    // let myLocalData = JSON.parse(localStorage.getItem("employeeData"));
+    // const employeeData = myLocalData.map((employee) => {
+    //   return JSON.parse(JSON.stringify(new EmployeeFactory(employee, "json")));
+    // });
 
-    console.log(employeeData);
-    dispatch(actions.resolved(employeeData));
+    // console.log(employeeData);
+    // dispatch(actions.resolved(employeeData));
 
     // HERE IS THE CODE WITH FETCH ONCE WE GET A BACKEND
-    // try {
-    //   // on utilise fetch pour faire la requête
-    //   let response = await fetch("../assets/data/employeedata.json", {
-    //     // let response = await fetch("../assets/data/emptydata.json", {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json",
-    //     },
-    //   });
-    //   const data = await response.json();
-    //   let employees = data.map((employee) => {
-    //     return JSON.parse(
-    //       JSON.stringify(new EmployeeFactory(employee, "json"))
-    //     );
-    //   });
-    //   console.log(data);
-    //   console.log(employees);
+    try {
+      // on utilise fetch pour faire la requête
+      let response = await fetch("../assets/data/employeedata.json", {
+        // let response = await fetch("../assets/data/emptydata.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      let employees = data.map((employee) => {
+        return JSON.parse(
+          JSON.stringify(new EmployeeFactory(employee, "json"))
+        );
+      });
 
-    //   dispatch(actions.resolved(data));
-    // } catch (error) {
-    //   dispatch(actions.rejected(error));
-    // }
+      dispatch(actions.resolved(employees));
+    } catch (error) {
+      dispatch(actions.rejected(error));
+    }
   };
 };
 
@@ -131,35 +129,38 @@ export const createNewEmployee = (newEmployee) => {
 
     dispatch(actions.fetching());
 
-    console.log("heilo");
+    // let myLocalData = JSON.parse(localStorage.getItem("employeeData"));
+    // const newEmployeeData = [...myLocalData, newEmployee];
 
-    let myLocalData = JSON.parse(localStorage.getItem("employeeData"));
-    const newEmployeeData = [...myLocalData, newEmployee];
+    // localStorage.setItem("employeeData", JSON.stringify(newEmployeeData));
 
-    localStorage.setItem("employeeData", JSON.stringify(newEmployeeData));
+    // const employeeData = newEmployeeData.map((employee) => {
+    //   return JSON.parse(JSON.stringify(new EmployeeFactory(employee, "json")));
+    // });
 
-    const employeeData = newEmployeeData.map((employee) => {
-      return JSON.parse(JSON.stringify(new EmployeeFactory(employee, "json")));
-    });
-
-    dispatch(actions.resolved(employeeData));
+    // dispatch(actions.resolved(employeeData));
 
     // HERE IS THE CODE WITH FETCH ONCE WE GET A BACKEND
-    // try {
-    //   // on utilise fetch pour faire la requête
-    //   const response = await fetch("../assets/data/employeedata.json", {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json",
-    //     },
-    //   });
-    //   const data = await response.json();
-    //   const mynewdata = [...data, newEmployee];
+    try {
+      // on utilise fetch pour faire la requête
+      const response = await fetch("../assets/data/employeedata.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await response.json();
+      const mynewdata = [...data, newEmployee];
+      const employeeData = mynewdata.map((employee) => {
+        return JSON.parse(
+          JSON.stringify(new EmployeeFactory(employee, "json"))
+        );
+      });
 
-    //   dispatch(actions.resolved(JSON.parse(JSON.stringify(mynewdata))));
-    // } catch (error) {
-    //   dispatch(actions.rejected(error));
-    // }
+      dispatch(actions.resolved(employeeData));
+    } catch (error) {
+      dispatch(actions.rejected(error));
+    }
   };
 };
 

@@ -27,6 +27,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         type="text"
         id="first-name"
         className="input"
+        placeholder="John"
         value={newEmployee.firstName}
         onChange={(e) => handleChange(e.target.value, `firstName`)}
       />
@@ -40,6 +41,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         name="last-name"
         id="last-name"
         className="input"
+        placeholder="Doe"
         value={newEmployee.lastName}
         onChange={(e) => handleChange(e.target.value, `lastName`)}
       />
@@ -83,6 +85,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
           id="street"
           type="text"
           className="input"
+          placeholder="Hello Street"
           value={newEmployee.street}
           onChange={(e) => handleChange(e.target.value, `street`)}
         />
@@ -95,6 +98,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
           id="city"
           type="text"
           className="input"
+          placeholder="World City"
           value={newEmployee.city}
           onChange={(e) => handleChange(e.target.value, `city`)}
         />
@@ -118,6 +122,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
           id="zip-code"
           type="number"
           className="input"
+          placeholder="12345"
           value={newEmployee.zipCode}
           onChange={(e) => handleChange(e.target.value, `zipCode`)}
         />

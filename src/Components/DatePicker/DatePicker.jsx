@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import dayjs from "dayjs";
 // import Stack from "@mui/material/Stack";
 // import TextField from "@mui/material/TextField";
@@ -16,14 +16,19 @@ import "react-datepicker/dist/react-datepicker.css";
  * @param {*} param0
  * @returns DatePicker component
  */
-const DatePicker = ({ handleDate, name }) => {
-  const [value, setValue] = useState();
-  // const [startDate, setStartDate] = useState(new Date());
+const DatePicker = ({ handleDate, name, value }) => {
+  const [dateValue, setDateValue] = useState();
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setDateValue(newValue);
     handleDate(newValue);
   };
+
+  useEffect(() => {
+    if (value === "") {
+      setDateValue("");
+    }
+  }, [value]);
 
   return (
     // <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -43,9 +48,10 @@ const DatePicker = ({ handleDate, name }) => {
       name={name}
       id={name}
       className="date-picker"
-      selected={value}
+      selected={dateValue}
       onChange={handleChange}
       dateFormat="dd/MM/yyyy"
+      placeholderText="dd/mm/yyyy"
     />
     // </div>
   );
