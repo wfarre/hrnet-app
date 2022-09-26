@@ -9,31 +9,31 @@ const EmployeeCard = ({ employee }) => {
   return (
     <div className="employee-info">
       <div className="employee-info__item">
-        <p>{employee.firstName}</p>
+        <p>{employee._firstName}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.lastName}</p>
+        <p>{employee._lastName}</p>
       </div>
       <div className="employee-info__itme">
-        <p>{employee.startDate}</p>
+        <p>{employee._startDate}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.department}</p>
+        <p>{employee._department}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.dateOfBirth}</p>
+        <p>{employee._dateOfBirth}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.street}</p>
+        <p>{employee._street}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.city}</p>
+        <p>{employee._city}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.state}</p>
+        <p>{employee._state}</p>
       </div>
       <div className="employee-info__item">
-        <p>{employee.zipCode}</p>
+        <p>{employee._zipCode}</p>
       </div>
     </div>
   );

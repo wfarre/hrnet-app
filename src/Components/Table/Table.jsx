@@ -28,7 +28,7 @@ const Table = ({ employees }) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const [clickCounter, setClickCounter] = useState(1);
-  const [prevId, setPrevId] = useState("firstName");
+  const [prevId, setPrevId] = useState("_firstName");
   const [currentDataType, setCurrentDataType] = useState("string");
 
   const [pageNumber, setPageNumber] = useState(1);

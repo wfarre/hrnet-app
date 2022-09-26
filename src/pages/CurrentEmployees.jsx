@@ -18,17 +18,19 @@ const CurrentEmployees = () => {
   const dispatch = useDispatch();
   const [employees, setEmployees] = useState([]);
 
+  const employeeData = useSelector(selectEmployees).data;
+
   useEffect(() => {
     dispatch(fetchEmployees());
   }, [dispatch]);
 
-  const employeeData = useSelector(selectEmployees).data;
-
   useEffect(() => {
-    let myEmployees = employeeData.map((employee) => {
-      return employee;
-    });
-    setEmployees(myEmployees);
+    if (employeeData) {
+      let myEmployees = employeeData.map((employee) => {
+        return employee;
+      });
+      setEmployees(myEmployees);
+    }
   }, [employeeData]);
 
   return (

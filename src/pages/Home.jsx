@@ -7,6 +7,8 @@ import { ReactComponent as Save } from "../assets/images/save-icon.svg";
 // import Form from "../Components/Form/Form";
 // import Modal from "../Components/Modal/Modal";
 import LinkButton from "../Components/Buttons/LinkButton";
+import { createNewEmployee } from "../features/employees";
+import { useDispatch } from "react-redux";
 
 const Form = lazy(() => import("../Components/Form/Form"));
 const Modal = lazy(() => import("../Components/Modal/Modal"));
@@ -43,6 +45,8 @@ const Home = () => {
     department: "",
   });
 
+  const dispatch = useDispatch();
+
   /**
    * submit the form when click on the submit button
    * @param {*} e
@@ -55,6 +59,7 @@ const Home = () => {
     setErrorMsg(errors);
     if (formIsValid) {
       setModalOpen(!modalOpen);
+      dispatch(createNewEmployee(newEmployee));
 
       setNewEmployee({
         firstName: "",

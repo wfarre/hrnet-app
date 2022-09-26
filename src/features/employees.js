@@ -45,6 +45,22 @@ const { actions, reducer } = createSlice({
         return;
       }
     },
+    // create: {
+    //   preapre: (newEmployee) => {
+    //     {
+    //       payload: {
+    //         newEmployee;
+    //       }
+    //     }
+    //   },
+    //   reducer: (draft, action) => {
+    //     if (draft.status === "updating" || draft.status === "pending") {
+    //       draft.status = "resolved";
+    //       draft.data = [...data, action.payload];
+    //       return;
+    //     }
+    //   },
+    // },
   },
 });
 
@@ -53,6 +69,56 @@ const { actions, reducer } = createSlice({
  * @returns array of employees
  */
 export const fetchEmployees = () => {
+  return async (dispatch, getState) => {
+    const status = selectEmployees(getState()).status;
+    console.log(status);
+
+    if (status === "pending" || status === "updating") {
+      return;
+    }
+
+    dispatch(actions.fetching());
+
+    //As we don't have a backend, we use the local storage as a backend
+    let myLocalData = JSON.parse(localStorage.getItem("employeeData"));
+    const employeeData = myLocalData.map((employee) => {
+      return JSON.parse(JSON.stringify(new EmployeeFactory(employee, "json")));
+    });
+
+    console.log(employeeData);
+    dispatch(actions.resolved(employeeData));
+
+    // HERE IS THE CODE WITH FETCH ONCE WE GET A BACKEND
+    // try {
+    //   // on utilise fetch pour faire la requête
+    //   let response = await fetch("../assets/data/employeedata.json", {
+    //     // let response = await fetch("../assets/data/emptydata.json", {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json",
+    //     },
+    //   });
+    //   const data = await response.json();
+    //   let employees = data.map((employee) => {
+    //     return JSON.parse(
+    //       JSON.stringify(new EmployeeFactory(employee, "json"))
+    //     );
+    //   });
+    //   console.log(data);
+    //   console.log(employees);
+
+    //   dispatch(actions.resolved(data));
+    // } catch (error) {
+    //   dispatch(actions.rejected(error));
+    // }
+  };
+};
+
+/**
+ * Create a new employee in the database
+ * @param newEmployee
+ */
+export const createNewEmployee = (newEmployee) => {
   return async (dispatch, getState) => {
     console.log("get in it");
 
@@ -67,62 +133,35 @@ export const fetchEmployees = () => {
 
     console.log("heilo");
 
-    try {
-      // on utilise fetch pour faire la requête
-      let response = await fetch("../assets/data/employeedata.json", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const data = await response.json();
-      let employees = data.map((employee) => {
-        return new EmployeeFactory(employee, "json");
-      });
-      console.log(employees);
-      dispatch(actions.resolved(data));
-    } catch (error) {
-      dispatch(actions.rejected(error));
-    }
+    let myLocalData = JSON.parse(localStorage.getItem("employeeData"));
+    const newEmployeeData = [...myLocalData, newEmployee];
+
+    localStorage.setItem("employeeData", JSON.stringify(newEmployeeData));
+
+    const employeeData = newEmployeeData.map((employee) => {
+      return JSON.parse(JSON.stringify(new EmployeeFactory(employee, "json")));
+    });
+
+    dispatch(actions.resolved(employeeData));
+
+    // HERE IS THE CODE WITH FETCH ONCE WE GET A BACKEND
+    // try {
+    //   // on utilise fetch pour faire la requête
+    //   const response = await fetch("../assets/data/employeedata.json", {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json",
+    //     },
+    //   });
+    //   const data = await response.json();
+    //   const mynewdata = [...data, newEmployee];
+
+    //   dispatch(actions.resolved(JSON.parse(JSON.stringify(mynewdata))));
+    // } catch (error) {
+    //   dispatch(actions.rejected(error));
+    // }
   };
 };
-
-// export const createNewEmployee = (newEmployee) => {
-//   return async (dispatch, getState) => {
-//     console.log("get in it");
-
-//     const status = selectEmployees(getState()).status;
-//     console.log(status);
-
-//     if (status === "pending" || status === "updating") {
-//       return;
-//     }
-
-//     dispatch(actions.fetching());
-
-//     console.log("heilo");
-
-//     try {
-//       // on utilise fetch pour faire la requête
-//       const response = await fetch("../assets/data/employeedata.json", {
-//         headers: {
-//           "Content-Type": "application/json",
-//           Accept: "application/json",
-//         },
-//       });
-//       const data = await response.json();
-//       let employees = data.map((employee) => {
-//         return new EmployeeFactory(employee, "json");
-//       });
-//       console.log(employees);
-//       const mynewdata = data.push(newEmployee);
-//       console.log(mynewdata);
-//       dispatch(actions.resolved(data.push(newEmployee)));
-//     } catch (error) {
-//       dispatch(actions.rejected(error));
-//     }
-//   };
-// };
 
 function setVoidIfUndefined(draft, credentials) {
   if (draft[credentials] === undefined) {

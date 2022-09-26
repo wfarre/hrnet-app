@@ -1,47 +1,47 @@
 export const tableHeaders = [
   {
     headerTitle: "First Name",
-    id: "firstName",
+    id: "_firstName",
     type: "string",
   },
   {
     headerTitle: "Last Name",
-    id: "lastName",
+    id: "_lastName",
     type: "string",
   },
   {
     headerTitle: "Start Date",
-    id: "startDate",
+    id: "_startDate",
     type: "date",
   },
   {
     headerTitle: "Department",
-    id: "department",
+    id: "_department",
     type: "string",
   },
   {
     headerTitle: "Date of Birth",
-    id: "dateOfBirth",
+    id: "_dateOfBirth",
     type: "date",
   },
   {
     headerTitle: "Street",
-    id: "street",
+    id: "_street",
     type: "string",
   },
   {
     headerTitle: "City",
-    id: "city",
+    id: "_city",
     type: "string",
   },
   {
     headerTitle: "State",
-    id: "state",
+    id: "_state",
     type: "string",
   },
   {
     headerTitle: "Zip Code",
-    id: "zipCode",
+    id: "_zipCode",
     type: "number",
   },
 ];

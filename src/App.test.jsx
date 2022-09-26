@@ -13,9 +13,11 @@ describe("I am on the home page", () => {
     const route = "/";
 
     render(
-      <MemoryRouter initialEntries={[route]}>
-        <App />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter initialEntries={[route]}>
+          <App />
+        </MemoryRouter>
+      </Provider>
     );
 
     const title = screen.getByText("HRnet");
@@ -29,9 +31,11 @@ describe("I am on the home page", () => {
       const route = "/";
 
       render(
-        <MemoryRouter initialEntries={[route]}>
-          <App />
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter initialEntries={[route]}>
+            <App />
+          </MemoryRouter>
+        </Provider>
       );
 
       const save = screen.getByTestId("save-btn");

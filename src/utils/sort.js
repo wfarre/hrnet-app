@@ -8,6 +8,7 @@ import { formateDate } from "./formateDate";
  * @returns sorted array
  */
 const ascendingSort = (data, dataType, id) => {
+  console.log(id);
   switch (dataType) {
     case "string":
       return data.sort((a, b) => a[id].localeCompare(b[id]));
@@ -32,6 +33,7 @@ const ascendingSort = (data, dataType, id) => {
  * @returns sorted array
  */
 const descendingSort = (data, dataType, id) => {
+  console.log(id);
   switch (dataType) {
     case "string":
       return data.sort((a, b) => b[id].localeCompare(a[id]));
