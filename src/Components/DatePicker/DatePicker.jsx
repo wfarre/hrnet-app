@@ -41,6 +41,7 @@ const DatePicker = ({ handleDate, name }) => {
     //   <label htmlFor="date-picker"></label>
     <DatePickerC
       name={name}
+      id={name}
       className="date-picker"
       selected={value}
       onChange={handleChange}

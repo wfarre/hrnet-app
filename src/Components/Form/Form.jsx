@@ -38,6 +38,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
       <input
         type="text"
         name="last-name"
+        id="last-name"
         className="input"
         value={newEmployee.lastName}
         onChange={(e) => handleChange(e.target.value, `lastName`)}
