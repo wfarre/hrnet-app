@@ -48,6 +48,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         Date of Birth
       </label>
       <DatePicker
+        id="date-of-birth"
         className="input"
         value={newEmployee.dateOfBirth}
         handleDate={(date) => {
@@ -61,6 +62,7 @@ const Form = ({ setNewEmployee, errorMsg, newEmployee }) => {
         Start Date
       </label>
       <DatePicker
+        id="start-date"
         className="input"
         value={newEmployee.startDate}
         handleDate={(date) => {
