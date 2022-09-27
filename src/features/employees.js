@@ -45,22 +45,6 @@ const { actions, reducer } = createSlice({
         return;
       }
     },
-    // create: {
-    //   preapre: (newEmployee) => {
-    //     {
-    //       payload: {
-    //         newEmployee;
-    //       }
-    //     }
-    //   },
-    //   reducer: (draft, action) => {
-    //     if (draft.status === "updating" || draft.status === "pending") {
-    //       draft.status = "resolved";
-    //       draft.data = [...data, action.payload];
-    //       return;
-    //     }
-    //   },
-    // },
   },
 });
 
