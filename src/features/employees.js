@@ -118,8 +118,6 @@ export const fetchEmployees = () => {
  */
 export const createNewEmployee = (newEmployee) => {
   return async (dispatch, getState) => {
-    console.log("get in it");
-
     const status = selectEmployees(getState()).status;
     console.log(status);
 

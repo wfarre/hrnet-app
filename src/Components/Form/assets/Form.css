@@ -7,6 +7,7 @@
 
 .address {
   width: 100%;
+  min-width: 280px;
   margin-top: 10%;
 }
 
@@ -16,7 +17,7 @@
   border-color: #c5c5c5;
   border-width: 1px;
   border-radius: 5px;
-  width: 70%;
+  width: 50%;
 }
 
 .input:hover {
@@ -27,4 +28,16 @@
   color: red;
   font-size: 13px;
   display: block;
+}
+
+.date-picker {
+  width: 50%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px #c5c5c5 solid;
+}
+
+.date-picker:hover {
+  border-color: #222222;
 }

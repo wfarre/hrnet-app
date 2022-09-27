@@ -88,6 +88,7 @@ const Home = () => {
             btnText={"View Current Employees "}
             icon={<Arrow className="icon icon--arrow" />}
             dataTestId="btn-employees"
+            className="button--current-employee"
           />
           <h2 className="title">Create Employee</h2>
           <Suspense>
