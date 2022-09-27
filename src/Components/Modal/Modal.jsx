@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 /**
  * React Component Modal
- * @param {*} param0
+ * @param {bool} modalOpen - check if modal is open or closed
+ * @param {function} handleModal - pass the boolean to the parent element
  * @returns Modal
  */
 const Modal = ({ modalOpen, handleModal }) => {
